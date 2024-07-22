@@ -30,4 +30,16 @@ public class ProductService {
     public Product getProduct(Long id) {
         return productRepository.findById(id).orElseThrow();
     }
+    public Product updateProduct(Long id, Product product) {
+        Product existingProduct = getProduct(id);
+        if (existingProduct != null) {
+            existingProduct.setName(product.getName());
+            existingProduct.setPrice(product.getPrice());
+            existingProduct.setStock(product.getStock());
+            existingProduct.setDescription(product.getDescription());
+            return saveProduct(existingProduct);
+        } else {
+            throw new RuntimeException("Product not found");
+        }
+    }
 }

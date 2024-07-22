@@ -38,5 +38,10 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
+    @PutMapping("/{id}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        return productService.updateProduct(id, product);
+    }
 
 }
