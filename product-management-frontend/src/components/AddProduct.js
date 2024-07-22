@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { addProduct, updateProduct } from '../api/api';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Description from './Description';
 import Navbar from './Navbar';
 
 const AddProduct = () => {
@@ -22,7 +21,7 @@ const AddProduct = () => {
         navigate('/products');
       });
     } else {
-      addProduct({ name, category, price, stock }).then(() => {
+      addProduct({ name, category, price, stock, description }).then(() => {
         navigate('/products');
       });
     }
@@ -41,6 +40,9 @@ const AddProduct = () => {
         break;
       case 'stock':
         setStock(event.target.value);
+        break;
+      case 'description':
+        setDescription(event.target.value);
         break;
       default:
         break;
